@@ -1,6 +1,16 @@
 .App {
   text-align: center;
+
 }
+
+.container {
+  border-radius: 16px;
+  padding: 32px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: -2px -2px 6px 2px #fff, 2px 2px 6px 2px #c4c4c4;
+}
+
 
 .App-logo {
   height: 40vmin;
