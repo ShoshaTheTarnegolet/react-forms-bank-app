@@ -2,7 +2,6 @@
   position: relative;
   margin-top: 20px;
   text-align: center;
-
 }
 .container .card .contentBox h3 {
   color: #000;
@@ -21,7 +20,7 @@
   box-shadow: -6px -6px 20px rgb(255 255 255), 6px 6px 20px rgb(0 0 0 / 10%);
 }
 .contentBox .select {
-width: 50%;
+  width: 50%;
 }
 .row {
   display: flex;

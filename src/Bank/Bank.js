@@ -108,6 +108,7 @@ export default function Bank() {
               פ.ח. {appContext.company_id}
             </h1>
           </div>
+
           <select placeholder="Select Option" className="select" name="select" defaultValue="help" onChange={(e) => appContext.setHolding(e.target.value)}>
             <option>החזקה %</option>
             {options.map(function (n) {
