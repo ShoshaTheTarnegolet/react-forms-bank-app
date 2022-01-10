@@ -1,0 +1,74 @@
+#selection {
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  box-shadow: 7px 7px 15px rgba(55, 84, 170, 0.15), -7px -7px 20px rgba(255, 255, 255, 1), 0px 0px 4px rgba(255, 255, 255, 0.2) !important;
+}
+#selection .contentBox .header {
+  padding: 0;
+}
+select {
+  margin-bottom: 2%;
+}
+.input_button_block {
+  align-items: center;
+  flex-wrap: wrap;
+}
+.button-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 100%;
+}
+.button-section button {
+  margin-bottom: 24px;
+}
+@media (max-width: 800px) {
+  .input_button_block div {
+    width: 100%;
+    order: 1;
+  }
+  .input_button_block div label {
+    margin-top: 5%;
+  }
+  .input_button_block button {
+    order: 2;
+  }
+}
+
+/* slider page */
+
+.input-row.slider {
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#slider_block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 65%;
+  gap: 25px;
+  margin-top: 4%;
+}
+#slider {
+  padding: 15px;
+  width: 100%;
+}
+.input-row.slider .button-section {
+  width: 30%;
+}
+@media (max-width: 1200px) {
+  #slider_block {
+    width: 100%;
+  }
+  .input-row.slider .button-section {
+    width: 100%;
+    flex-direction: column;
+  }
+  .input-row.slider .button-section button {
+    width: 100%;
+    flex: 0;
+  }
+}

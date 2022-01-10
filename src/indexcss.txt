@@ -1,0 +1,222 @@
+body,
+html {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.2px;
+  font-size: 16px;
+  height: 100vh;
+  width: 100%;
+  direction: rtl;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.input[name='branch']{border: 0;
+    outline: 0;
+    font-size: 16px;
+    border-radius: 25px;
+    padding: 16px;
+    background-color:#EBECF0;
+    text-shadow: 1px 1px 0 #FFF;
+    margin-right: 8px;
+    box-shadow:  inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+    appearance: none;
+    -webkit-appearance: none;
+}
+input[name='branch'], input[name='account']{border: 0;
+  outline: 0;
+  font-size: 16px;
+  border-radius: 25px;
+  padding: 16px;
+  background-color:#EBECF0;
+  text-shadow: 1px 1px 0 #FFF;
+  margin-right: 8px;
+  box-shadow:  inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.css-1480iag-MuiInputBase-root-MuiInput-root:before{
+  border-bottom:none
+}
+.css-1480iag-MuiInputBase-root-MuiInput-root:hover:not(.Mui-disabled):before{
+  border-bottom:none;
+}
+input[type='number']{
+
+}
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+label {
+  display: block;
+  margin-bottom: 24px;
+  width: 100%;
+}
+/* .login_form label:hover{
+  display: none;
+  color: transparent;
+} */
+
+form, .form {
+  height: 100%;
+  padding: 16px;
+  width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+button, input {
+  border: 0;
+  outline: 0;
+  font-size: 16px;
+  border-radius: 320px;
+  padding: 16px;
+  background-color: #EBECF0;
+  text-shadow: 1px 1px 0 #fff;}
+input{
+  margin-right: 8px;
+  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  appearance: none;
+  -webkit-appearance: none
+}
+input:focus{
+  box-shadow:  inset 1px 1px 2px#BABECC, inset -1px -1px 2px #fff;
+}
+button {
+  color: #61677C;
+  font-weight: bold;
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  font-weight: 600;
+}
+button:hover{
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+button:active{
+  box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #fff;
+}
+.container, .MuiContainer-root{
+  height: 100%;
+}
+.btnBlock{
+  padding: 32px 0;
+  text-align: center;
+}
+.bank_form{
+  justify-content:space-around
+}
+
+.css-b62m3t-container
+div.css-1rk5p1a-control,  div.css-b62m3t-container{
+border: none;
+}
+/* div.css-319lph-ValueContainer{
+  display:flex
+} */
+div.css-1825xz5-control:hover{
+  border-color: #fff;
+}
+#react-select-3-input{
+  margin-right: 8px;
+  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  appearance: none;
+  -webkit-appearance: none;
+}
+div .css-tj5bde-Svg, div .css-1okebmr-indicatorSeparator{
+  display:none;
+}
+
+input.select_holding, .css-6j8wv5-Input{
+  margin-right: 8px;
+  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  outline: 0;
+  font-size: 16px;
+  border-radius: 25px;
+  padding: 16px;
+  background-color: #EBECF0;
+  text-shadow: 1px 1px 0 #fff;
+
+}
+
+
+ <div className="container">
+      <div className="form">
+        <div className="header">
+          <h1>אנא השלימו את הפרטים הבאים</h1>
+        </div>
+
+          <div>
+
+            {appContext.editing ? (
+       <InputBlock onChange={handleChange} handleSubmit={handleSubmit}/>
+            ) : (
+              <>
+             <Text/>
+              </>
+            )}
+          </div>
+          {appContext.isClick ? <button onClick={Click}>No Click</button> : <button onClick={Click}>Click</button>}
+
+
+          <NextBtn className="next"next={nextPg} />
+          <ReturnBtn onClick={onClick} />
+          <EditBtn />
+
+      </div>
+    </div>
+
+<div className="container-01">
+		<h2>Neumorphism</h2>
+		<div className="neumorphic-card">
+			<div className="imgBox">
+				<i className="fa fa-pencil-ruler"></i>
+			</div>
+			<div className="contentBox">
+				<h3>Design</h3>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard ...</p>
+				<a href="#"><span>Read More</span></a>
+			</div>
+		</div>
+		<p><span>CSS Property:</span> Box Shadow</p>
+	</div>
+
+<div>
+    {appContext.editing ? (<TextBlock/>) : (
+      <InputBlock onChange={handleChange} handleSubmit={handleSubmit}/>
+    )}
+
+
+            <div className="neumorphic-tab-container__controls">
+
+ <NextBtn className="next"next={nextPg} />
+  <ReturnBtn className="return" onClick={onClick} /><EditBtn insidetext = {appContext.isClick ? "save" : "edit"}/>
+
+      </div>
+      </div>

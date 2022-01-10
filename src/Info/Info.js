@@ -6,150 +6,112 @@ import { Context } from '../context/context.js';
 import { useNavigate } from 'react-router-dom';
 import ReturnBtn from '../Button/ReturnBtn';
 import EditBtn from '../Button/EditBtn';
-import { onSnapshot, collection, doc, getDoc } from 'firebase/firestore';
-import TextInput from '../Inputs/TextInput';
+import TextBlock from './TextBlock';
+import InputBlock from '../Inputs/InputBlock';
 
 export default function Info() {
   const appContext = useContext(Context);
   let navigate = useNavigate();
 
+  /* show function every time when rendering */
   useEffect(() => {
-    /*     appContext.setID(JSON.parse(localStorage.getItem('id')));
-  console.log(appContext.id); */
-    console.log(appContext.user.password);
     show();
   }, []);
 
   const show = async function () {
     try {
+      /* we have an id and we get the data from firestore */
       db.collection('users')
         .where('id', '==', String(appContext.id))
         .onSnapshot((snapshot) => {
-          let user_info = [];
           snapshot.docs.forEach((doc) => {
             const data = doc.data();
-            console.log(data);
             appContext.setLName(data.last_name);
-            /*  //  /*       appContext.setUser(appContext.user = data);
-     /*       appContext.setPhone(data.phone); */
-            user_info.push({
-              user_name: data.name,
-              user_last_name: data.last_name,
-              user_email: data.email,
-              user_birth_date: data.birth_date,
-              user_phone: data.phone,
-              user_company_id: data.company_id,
-              user_company_name: data.company_name,
-              user_ID: data.id,
-            });
+            appContext.setName(data.name);
+            appContext.setPhone(data.phone);
+            appContext.setBDate(data.birth_date);
+            appContext.setEmail(data.email);
+            appContext.setCompanyID(data.company_id);
+            appContext.setCompanyName(data.company_name);
+            appContext.setInputValue((appContext.inputValue = data));
           });
-          appContext.setUser(user_info);
-          /*          appContext.user.map(x => console.log(x)) */
-          console.log(appContext.last_name);
-          /*   appContext.setUser(user_info); */
-          //  Object.keys(appContext.user).map((user) =>   console.log( user))
-          //    console.dir(appContext.user);
         });
     } catch (e) {
       console.log(e);
     }
   };
 
-  /*  const show = () => {
-
-    console.log( appContext.id);
-      db.collection('users').where('id', '==', "123")
-      .onSnapshot((snapshot) => {
-        let user_info = []
-         snapshot.docs.forEach(doc => {
-           const data = doc.data();
-           user_info.push({
-            user_name: data.name,
-            user_last_name: data.last_name,
-            user_email: data.email,
-            user_birth_date: data.birth_date,
-            user_phone: data.phone,
-            user_company_id: data.company_id,
-            user_company_name: data.company_name,
-            user_ID: data.id,
-           })
-           console.log( user_info);
-           appContext.setUser(user_info);
-           console.log(appContext.user);
-         });
-       })
-
-
-  } */
-
   const nextPg = (e) => {
     e.preventDefault();
-    navigate('/bank');
 
-    db.collection('users').doc(appContext.id).set(
-      {
-        name: appContext.name,
-        last_name: appContext.last_name,
-        email: appContext.email,
-        birth_date: appContext.birth_date,
-        phone: appContext.phone,
-        company_id: appContext.company_ID,
-        company_name: appContext.company_name,
-      },
-      { merge: true }
-    );
+    if (!appContext.inputValue.name || !appContext.inputValue.last_name || !appContext.inputValue.email || !appContext.inputValue.birth_date || !appContext.inputValue.company_id || !appContext.inputValue.company_name || !appContext.id) {
+      alert('נא למלא את הנתונים הנדרשים');
+    } else {
+      /* if all needed input are filled, we can move on */
+      navigate('/bank');
+      /* this two state helps us to toggle buttons and change text block to input block */
+      appContext.setClick(false);
+      appContext.setEditing(false);
+      /* this is how we send our data to firestore. we update or added new fields */
+      db.collection('users').doc(appContext.id).set(
+        {
+          name: appContext.inputValue.name,
+          last_name: appContext.inputValue.last_name,
+          email: appContext.inputValue.email,
+          birth_date: appContext.inputValue.birth_date,
+          phone: appContext.inputValue.phone,
+          company_id: appContext.inputValue.company_id,
+          company_name: appContext.inputValue.company_name,
+        },
+        { merge: true }
+      );
+    }
   };
 
+  /* button to move to previous page */
   const onClick = () => {
     navigate(-1);
-    /*  appContext.setID('');
-    appContext.setUser('');
-    appContext.setPassword('') */
+    appContext.setEditing(false);
+    appContext.setID('');
+    appContext.setPassword('');
   };
 
-  const onChange = (e) => {
-    appContext.setLName(e.target.value);
-
-    appContext.user.user_last_name = e.target.value;
-    console.log(appContext.last_name, appContext.user.user_last_name);
+  /* we can put our valuer from input to an object */
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    appContext.setInputValue((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
+  /* for phonevalidation input */
+  const phoneValidation = () => {
+    const regex = /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/i;
+    appContext.setValid(regex.test(appContext.inputValue.phone));
+    console.log(appContext.isPhoneValid, regex.test(appContext.inputValue.phone));
+    return !(!appContext.inputValue.phone || regex.test(appContext.inputValue.phone) === false);
+  };
+  /*  */
 
   return (
     <div className="container">
-      <div className="form">
+      <div className="container card">
         <div className="header">
           <h1>אנא השלימו את הפרטים הבאים</h1>
         </div>
-        <form>
-          <div>
-            {/*
-       {  appContext.user.map((user) =>
- ( <>
-     {appContext.editing ? <TextInput onChange = {onChange}/> : <div>{appContext.last_name}</div>}
- </>
+        {appContext.editing ? (
+          <InputBlock onChange={handleChange} />
+        ) : (
+          <>
+            <TextBlock />
+          </>
+        )}
 
- ))} * */}
-            {appContext.editing ? <TextInput onChange={onChange} /> : <div>{appContext.last_name}</div>}
-            <input type="text" className="input" placeholder="שם פרטי" value={appContext.name} onChange={(e) => appContext.setName(e.target.value)} />
-            <input type="text" className="input" placeholder="שם המשפחה" value={appContext.last_name} onChange={(e) => appContext.setLName(e.target.value)} />
-          </div>
-          <div>
-            <input type="number" className="input" placeholder="תעודת זהות" pattern="[0-9]*" defaultValue={appContext.id} />
-            <input type="date" className="input" placeholder="תאריך לידה" value={appContext.birth_date} onChange={(e) => appContext.setBDate(e.target.value)} />
-          </div>
-          <div>
-            {appContext.editing ? <input type="number" className="input" placeholder="טלפון" value={appContext.phone} onChange={(e) => appContext.setPhone(e.target.value)} /> : <div>{appContext.user.phone}</div>}
-            {/*     <input type="number" className="input" placeholder="טלפון" value={appContext.phone} onChange={(e) => appContext.setPhone(e.target.value)}/> */}
-            <input type="email" className="input" placeholder="דואר אלקטרוני" value={appContext.user.email ? appContext.user.email : appContext.email} onChange={(e) => appContext.setEmail(e.target.value)} />
-          </div>
-          <div>
-            <input type="text" className="input" placeholder="שם העסק" value={appContext.company_name} onChange={(e) => appContext.setCompanyName(e.target.value)} />
-            <input type="number" className="input" placeholder="ח.פ." value={appContext.company_ID} onChange={(e) => appContext.setCompanyID(e.target.value)} />
-          </div>
-          <NextBtn next={nextPg} />
-          <ReturnBtn onClick={onClick} />
-          <EditBtn />
-        </form>
+        <div className="input-row button_block">
+          <NextBtn className="next_btn" next={nextPg} />
+          <ReturnBtn className="return_btn" onClick={onClick} />
+          <EditBtn insidetext={appContext.isClick ? 'לשמור' : 'לערוך'} />
+        </div>
       </div>
     </div>
   );

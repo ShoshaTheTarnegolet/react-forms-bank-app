@@ -1,2 +1,81 @@
-h1 {
+.text_block {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  padding: 0 5%;
+}
+/* block with info cards */
+.text_column {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+/* text card with info */
+.content {
+  padding: 0 2rem;
+}
+.content h3 {
+  color: #32a3b1;
+  transition: all 0.5s cubic-bezier(0.5, 0, 0.5, 1);
+  text-shadow: 1px 1px 0 #fff;
+}
+
+.content h3:hover {
+  color: #000;
+}
+.container .content p {
+  color: #000;
+  font-size: 1.2rem;
+}
+.container .card .card_container {
+  margin-top: 15px;
+  background-color: #ffffff;
+  padding: 1vw;
+  margin-bottom: 12vh;
+}
+.input-row {
+  width: 100%;
+  display: flex;
+  gap: 25px;
+  margin-top: 4%;
+  justify-content: center;
+}
+.input-row button {
+  width: 10%;
+  flex: 1 0 149px;
+}
+
+
+@media (max-width: 1100px) {
+  div .text_block {
+    flex-direction: column;
+    align-items: center;
+  }
+  div .text_column {
+    width: 100%;
+    text-align: center;
+  }
+  div .text_column .content h3 {
+    font-size: 1.8rem;
+  }
+  .button_block {
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+  }
+  div .button_block button {
+    width: 100%;
+    flex: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .card_container {
+    flex-wrap: wrap;
+  }
+  .card_container .card {
+    flex: 0 0 100%;
+  }
 }

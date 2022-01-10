@@ -1,74 +1,108 @@
-import React, { useContext, useRef } from 'react';
-import Slider, { SliderTooltip } from 'rc-slider';
+import React, { useContext } from 'react';
 import 'rc-slider/assets/index.css';
 import NextBtn from '../Button/NextBtn';
 import ReturnBtn from '../Button/ReturnBtn';
 import { Context } from '../context/context.js';
+import Slider from '@mui/material/Slider';
+import { styled } from '@mui/material/styles';
+import TextInput from '../Inputs/TextInput';
+import { useNavigate } from 'react-router-dom';
+import './Loan.css';
 
 export default function Loan() {
   const appContext = useContext(Context);
-  const { Handle } = Slider;
-  const nodeRef = useRef(null);
+  let navigate = useNavigate();
 
-  const handle = (props) => {
-    const { value, dragging, index, ...restProps } = props;
-    return (
-      <SliderTooltip prefixCls="rc-slider-tooltip" overlay={`${value} שנים`} visible={dragging} placement="top" key={index}>
-        <Handle value={value} {...restProps} />
-      </SliderTooltip>
-    );
-  };
-
-  const wrapperStyle = { width: 400, margin: 50 };
-
-  const marks = {
-    4: {
-      style: {
-        color: 'red',
-        fontSize: '26px',
-      },
-      label: <strong>4</strong>,
+  /* for slider */
+  const marks = [
+    {
+      value: 4,
+      label: '4',
     },
-    8: {
-      style: {
-        color: 'red',
-        fontSize: '26px',
-      },
-      label: <strong>8</strong>,
+    {
+      value: 8,
+      label: '8',
     },
-  };
+  ];
 
-  const nextPg = (e) => {
-    e.preventDefault();
-  };
+  const PrettoSlider = styled(Slider)({
+    color: '#52af77',
+    height: 8,
 
-  const onChange = (e) => {
-    const re = /^[0-9\b]+$/;
-    if (e.target.value === '' || re.test(e.target.value)) {
-      let nf = new Intl.NumberFormat('en-US');
+    '& .MuiSlider-track': {
+      border: 'none',
+    },
+    '& .css-14pt78w-MuiSlider-rail': {
+      color: '#185BF1',
+    },
+    '& .MuiSlider-thumb': {
+      height: 24,
+      width: 24,
+      backgroundColor: '#fff',
+      border: '2px solid #000',
+      '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
+        boxShadow: 'inherit',
+      },
+      '&:before': {
+        display: 'none',
+      },
+    },
+    '& .MuiSlider-valueLabel': {
+      lineHeight: 1.2,
+      fontSize: 20,
+      background: 'unset',
+      padding: '8px 0',
+      width: 40,
+      height: 40,
 
-      console.log(nf.format(e.target.value));
-      appContext.setLoan(nf.format(e.target.value));
-    }
-  };
+      boxShadow: '7px 7px 15px rgba(55, 84, 170, .15), 6px 6px 20px rgb(0 0 0 / 10%)',
+      borderRadius: '50% 50% 50% 0',
+      backgroundColor: '#EBECF0',
+      color: '#a3aab9',
+      transformOrigin: 'bottom left',
+      transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
+      '&:before': { display: 'none' },
+      '&.MuiSlider-valueLabelOpen': {
+        transform: 'translate(50%, -100%) rotate(-45deg) scale(1)',
+      },
+      '& > *': {
+        transform: 'rotate(45deg)',
+      },
+    },
+  });
 
   return (
     <div className="container">
-      <form>
+      <div className="container card ">
         <div className="header">
-          <h1>Sign in</h1>
-        </div>
-        <label>
-          <input type="text" placeholder="100,000 - 1,000,000" value={appContext.loan} onChange={onChange} />
-        </label>
-
-        <div style={wrapperStyle}>
-          <Slider min={4} max={8} marks={marks} defaultValue={4} tipFormatter={(value) => `${value}שנים`} handle={handle} step={0.1} />
+          <h1>אנא הזינו את סכום החלוואה המבוקש ומשך זמן הלוואה</h1>
         </div>
 
-        <NextBtn next={nextPg} />
-        <ReturnBtn />
-      </form>
+        <div className="input-row slider">
+          <div id="slider_block">
+            <TextInput
+              id="range"
+              type="number"
+              name="range"
+              min="10000"
+              max="1000000"
+              placeholder="100,000 - 1,000,000"
+              value={appContext.loan}
+              onChange={(e) => {
+                appContext.setLoan(e.target.value);
+              }}
+            />
+
+            <div id="slider">
+              <PrettoSlider step={0.1} valueLabelDisplay="auto" min={4} max={8} aria-label="pretto slider" defaultValue={4} marks={marks} />
+            </div>
+          </div>
+          <div className="button-section">
+            <NextBtn />
+            <ReturnBtn onClick={() => navigate(-1)} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

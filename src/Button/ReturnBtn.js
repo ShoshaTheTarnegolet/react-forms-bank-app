@@ -1,13 +1,6 @@
-import React, { useContext, useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
-import { Context } from '../context/context.js';
+import React from 'react';
 
-export default function ReturnBtn({onClick}) {
-    const navigate = useNavigate();
-    const appContext = useContext(Context);
-
-
-
+export default function ReturnBtn({ onClick }) {
   return (
     <button className="PrevBtn" type="button" onClick={onClick}>
       חזור

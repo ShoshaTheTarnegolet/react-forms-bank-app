@@ -1,9 +1,10 @@
 import React from 'react';
 
-export default function NextBtn({ next }) {
+export default function NextBtn({ next, className }) {
   return (
-    <button className="nextBtn" type="button" onClick={next}>
+    <button className={className} type="button" onClick={next}>
       המשך
+      {/* also it's good to add here an icon */}
     </button>
   );
 }

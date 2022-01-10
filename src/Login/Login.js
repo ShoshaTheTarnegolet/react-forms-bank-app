@@ -1,56 +1,61 @@
-import React, { useEffect, useContext, useLocalStorage } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import React, { useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import NextBtn from '../Button/NextBtn';
 import { db } from '../firebase';
 import { Context } from '../context/context.js';
-/* import './Login.css' */
+import TextInput from '../Inputs/TextInput';
+import './Login.css';
 
 export default function Login() {
-
-
+  /* navigate for moving to other page */
   const appContext = useContext(Context);
   let navigate = useNavigate();
 
+  /* useEffect for clearing localStorage */
   useEffect(() => {
-    console.log(appContext.id)
     localStorage.removeItem('id');
-/*     console.log(localStorage); */
-/*     localStorage.removeItem('id'); */
   }, []);
 
+  /* button function */
   function nextPg(e) {
     e.preventDefault();
- localStorage.setItem('id', appContext.id);
-    console.log(localStorage);
+    /* localStorage get id value from input */
+    localStorage.setItem('id', appContext.id);
+    /* error message for empty id input */
+    if (!appContext.id) {
+      alert('נא להזין את התעודת הזהות ');
+    }
+    /* retrive data from firestore using id */
     db.collection('users')
       .doc(appContext.id)
       .get()
       .then((snapshot) => {
+        /* if there's no user with this id */
+        if (!snapshot.data()) {
+          alert('משתמש לא קיים');
+        }
         let data = snapshot.data();
-        console.log(data);
+        /* if id and password from firestore are same as entered, we move on */
         if (data.id === appContext.id && data.password === appContext.password) {
-          console.log(appContext.id);
-          appContext.setLoggedIn(true);
           navigate('/info');
         } else {
-          console.dir('no', data.password, appContext.password);
+          console.dir('we got an error. why?', data.password, appContext.password);
         }
       });
   }
 
   return (
-    <div className="container">
-      <form>
-        <div className="header">
-          <h1>Sign in</h1>
+    <div className="container ">
+      <form className="container card">
+        <div className="segment header">
+          <h1> כניסה</h1>
         </div>
-        <label>
-          <input type="number" placeholder="ID" value={appContext.id} onChange={(e) => appContext.setID(e.target.value)} />
-        </label>
-        <label>
-          <input type="password" placeholder="Password" value={appContext.password} onChange={(e) => appContext.setPassword(e.target.value)} />
-        </label>
-        <NextBtn next={nextPg} />
+        <div className="input-login">
+          <TextInput id="id" type="number" name="id" value={appContext.id} placeholder="תעודת זהות" onChange={(e) => appContext.setID(e.target.value)} />
+
+          <TextInput id="password" type="password" name="password" value={appContext.password} placeholder="סיסמה" onChange={(e) => appContext.setPassword(e.target.value)} />
+        </div>
+        <NextBtn className="login_btn" next={nextPg} />
       </form>
     </div>
   );
