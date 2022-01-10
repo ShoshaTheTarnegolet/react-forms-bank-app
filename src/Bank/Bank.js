@@ -119,8 +119,7 @@ export default function Bank() {
               );
             })}
           </select>
-<div className="row">
-
+          <div className="row">
             {formValues.map((element, index) => (
               <div className="bank-choose " key={index + 1}>
                 <select name="select" onChange={(e) => bankHandler(index, e)}>
@@ -150,7 +149,7 @@ export default function Bank() {
                 </div>
               </div>
             ))}
-</div>
+          </div>
           <div className="input-row button_block">
             <NextBtn next={nextPg} />
             <ReturnBtn onClick={() => navigate(-1)} />

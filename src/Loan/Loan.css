@@ -56,6 +56,14 @@ select {
   padding: 15px;
   width: 100%;
 }
+#slider span {
+  color: #1976d2;
+  font-size: 1.2rem;
+}
+#slider span .css-1gv0vcd-MuiSlider-track {
+  color: #1976d2;
+  font-size: 1.2rem;
+}
 .input-row.slider .button-section {
   width: 30%;
 }

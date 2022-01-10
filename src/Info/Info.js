@@ -74,6 +74,7 @@ export default function Info() {
     appContext.setEditing(false);
     appContext.setID('');
     appContext.setPassword('');
+    appContext.setClick(false);
   };
 
   /* we can put our valuer from input to an object */
@@ -95,7 +96,7 @@ export default function Info() {
 
   return (
     <div className="container">
-      <div className="container card">
+      <div className="container card info">
         <div className="header">
           <h1>אנא השלימו את הפרטים הבאים</h1>
         </div>

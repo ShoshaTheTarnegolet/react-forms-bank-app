@@ -100,6 +100,9 @@ button:active {
 .add:hover {
   color: #32a3b1;
 }
+.PrevBtn:hover {
+  color: #1976d2;
+}
 .flex {
   display: flex;
   flex-direction: row;

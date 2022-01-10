@@ -16,7 +16,7 @@ export default function Loan() {
   /* for slider */
   const marks = [
     {
-      value: 4,
+      value: '4',
       label: '4',
     },
     {
@@ -25,21 +25,28 @@ export default function Loan() {
     },
   ];
 
+
   const PrettoSlider = styled(Slider)({
     color: '#52af77',
     height: 8,
 
+
     '& .MuiSlider-track': {
       border: 'none',
+
+    },
+    '&.css-1geiho5-MuiSlider-root .MuiSlider-track': {
+      color: '#000',
     },
     '& .css-14pt78w-MuiSlider-rail': {
-      color: '#185BF1',
+      color: '#000',
+      backgroundColor: '#000',
     },
     '& .MuiSlider-thumb': {
       height: 24,
       width: 24,
-      backgroundColor: '#fff',
-      border: '2px solid #000',
+      backgroundColor: '#1976d2',
+      border: '2px solid #1976d2',
       '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
         boxShadow: 'inherit',
       },
@@ -94,7 +101,7 @@ export default function Loan() {
             />
 
             <div id="slider">
-              <PrettoSlider step={0.1} valueLabelDisplay="auto" min={4} max={8} aria-label="pretto slider" defaultValue={4} marks={marks} />
+              <PrettoSlider  step={0.1} valueLabelDisplay="auto" min={4} max={8} aria-label="pretto slider" defaultValue={4} marks={marks} />
             </div>
           </div>
           <div className="button-section">

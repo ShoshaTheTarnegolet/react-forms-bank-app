@@ -15,6 +15,7 @@ export default function TextBlock() {
           <Text title="תאריך לידה" info={appContext.birth_date} />
         </div>
 
+
         <div className="text_column">
           <Text title="טלפון" info={appContext.phone} />
           <Text title="דואר אלקטרוני" info={appContext.email} />
