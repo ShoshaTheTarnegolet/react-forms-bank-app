@@ -47,7 +47,7 @@ export default function Login() {
   return (
     <div className="container ">
       <form className="container card">
-        <div className="segment header">
+        <div className="header_login">
           <h1> כניסה</h1>
         </div>
         <div className="input-login">

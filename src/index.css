@@ -19,6 +19,7 @@ body,
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  height: 100%;
   width: 100%;
   background-color: #ebecf0;
 }
@@ -31,12 +32,11 @@ span {
 }
 h1 {
   color: #000;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   padding: 0.5rem 0 1rem 0;
   margin: 0;
   font-weight: 700;
   text-align: center;
-  text-transform: uppercase;
   white-space: pre-line;
 }
 h3 {
@@ -128,8 +128,8 @@ button:active {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 28px;
-  padding: 40px 30px;
+/*   margin: 28px; */
+  padding:  1.5% 30px 1.8%;
   background: #ebecf0;
   border-radius: 40px;
   box-shadow: -6px -6px 20px rgba(255, 255, 255, 1), 6px 6px 20px rgba(0, 0, 0, 0.1);
@@ -162,7 +162,7 @@ button:active {
   }
 }
 .header {
-  padding: 32px 0;
+  padding: 1% 0;
   text-align: center;
 }
 
