@@ -9,6 +9,7 @@ button,
   letter-spacing: -0.2px;
   font-size: 16px;
   color: #000;
+  direction: rtl;
 }
 body,
 #root {
@@ -121,6 +122,27 @@ button:active {
   margin-left: auto;
   background: #ebecf0;
 }
+.animate {
+  animation-duration: 0.75s;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
+  animation-name: animate-flip;
+  animation-timing-function: cubic-bezier(.26,.53,.74,1.48);
+  animation-fill-mode: backwards;
+}
+.animate.slide { animation-name: animate-slide; }
+
+@keyframes animate-slide {
+  0% {
+    opacity: 0;
+    transform: translate(0, 20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
 .container .card {
   width: 50%;
   /* 	height: 500px; */
@@ -137,7 +159,7 @@ button:active {
 /* container and card styles  */
 .container p {
   z-index: 12;
-  margin: 20px auto 10px;
+  margin: 1% auto 10px;
   position: relative;
   color: #32a3b1;
 }

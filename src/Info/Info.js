@@ -95,7 +95,7 @@ export default function Info() {
   /*  */
 
   return (
-    <div className="container">
+    <div className="container animate slide">
       <div className="container card info">
         <div className="header">
           <h1>אנא השלימו את הפרטים הבאים</h1>

@@ -8,7 +8,7 @@
   flex-direction: row;
 }
 .input-login label:first-child {
-  margin-right: 4%;
+  margin-left: 4%;
 }
 .login_btn {
   display: block;

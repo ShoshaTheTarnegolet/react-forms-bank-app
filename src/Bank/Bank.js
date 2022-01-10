@@ -77,6 +77,7 @@ export default function Bank() {
   };
 
   const add = async function () {
+    console.log(formValues)
     try {
       /* we updated our docs or added new info*/
       const docRef = doc(db, 'users', String(appContext.id));
@@ -99,7 +100,7 @@ export default function Bank() {
   };
 
   return (
-    <div className="container">
+    <div className="container animate slide">
       <div id="selection" className="container card ">
         <form onSubmit={handleSubmit} className="contentBox">
           <div className="header">
@@ -121,7 +122,7 @@ export default function Bank() {
           </select>
           <div className="row">
             {formValues.map((element, index) => (
-              <div className="bank-choose " key={index + 1}>
+              <div className="bank-choose  animate slide " key={index + 1}>
                 <select name="select" onChange={(e) => bankHandler(index, e)}>
                   <option>בנק</option>
                   {banks.map(function (n) {

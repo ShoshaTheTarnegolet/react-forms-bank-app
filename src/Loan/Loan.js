@@ -79,7 +79,7 @@ export default function Loan() {
   });
 
   return (
-    <div className="container selection">
+    <div className="container selection animate slide">
       <div className="container card ">
         <div className="header">
           <h1>אנא הזינו את סכום החלוואה המבוקש ומשך זמן הלוואה</h1>

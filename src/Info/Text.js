@@ -7,7 +7,7 @@ export default function Text({title, info}) {
 
 <>
 
-<div className="content">
+<div className="content animate slide '">
         <h3>{title}</h3>
 
         <p>{info}</p>

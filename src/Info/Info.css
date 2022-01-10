@@ -14,17 +14,27 @@
 /* text card with info */
 .content {
   padding: 0 2rem;
+  width: 300px;
 }
+
 .content h3 {
   color: #32a3b1;
   transition: all 0.5s cubic-bezier(0.5, 0, 0.5, 1);
   text-shadow: 1px 1px 0 #fff;
   margin: 0;
 }
-
 .content h3:hover {
   color: #000;
 }
+.animate {
+  animation-duration: 0.75s;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
+  animation-name: animate-flip;
+  animation-timing-function: cubic-bezier(.26,.53,.74,1.48);
+  animation-fill-mode: backwards;
+}
+
 .container .content p {
   color: #000;
   font-size: 1.2rem;
