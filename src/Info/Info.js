@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useCallback  } from 'react';
 import './Info.css';
 import NextBtn from '../Button/NextBtn';
 import { db } from '../firebase';
@@ -13,10 +13,14 @@ export default function Info() {
   const appContext = useContext(Context);
   let navigate = useNavigate();
 
-  /* show function every time when rendering */
+  /* show function every time when rendering*/
   useEffect(() => {
+    console.log(appContext.id)
+    ;
+
     show();
   }, []);
+
 
   const show = async function () {
     try {
@@ -95,7 +99,7 @@ export default function Info() {
   /*  */
 
   return (
-    <div className="container animate slide">
+    <div className="container animate slide" >
       <div className="container card info">
         <div className="header">
           <h1>אנא השלימו את הפרטים הבאים</h1>

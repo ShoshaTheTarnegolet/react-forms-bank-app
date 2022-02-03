@@ -1,0 +1,40 @@
+.modal {
+
+    background-color: rgba(0,0,0,0.4); /* Overlay effect: translucent background: black w/ partial opacity */
+    z-index: 1; /* Overlay effect: positioned over other containers */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    position: fixed; /* Fix position on the top-left corner*/
+    top: 0;
+    left: 0;
+    overflow: auto; /* Enable scroll if needed */
+    padding-top: 80px; /* Location of the content container */
+    display:flex;
+
+
+  }
+
+  .modal-text {
+    padding: 1rem;
+    margin: 0;
+    font-size: 2rem;
+    color: #000;
+  }
+  .modal-content {
+    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+    background: #ebecf0;
+    width: 70%;
+    max-width: 440px;
+    height: 40%;
+    margin: auto;
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+.close{
+  display: block;
+  width: 70%;
+}

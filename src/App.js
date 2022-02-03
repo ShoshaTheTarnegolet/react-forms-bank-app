@@ -25,6 +25,7 @@ function App() {
   const [editing, setEditing] = useState(false);
   const [loan, setLoan] = useState('');
   const [inputValue, setInputValue] = useState({ name: '', last_name: '', email: '', birth_date: '', phone: '', company_name: '', company_id: '' });
+  const [language, setLanguage] = useState(true)
 
   return (
     <Context.Provider
@@ -63,12 +64,13 @@ function App() {
         setInputValue,
         isClick,
         setClick,
+        language, setLanguage
       }}
     >
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/info" element={<Info />} />
+          <Route path="/info" element={<Info />}  />
           <Route path="/bank" element={<Bank />} />
           <Route path="/loan" element={<Loan />} />
         </Routes>

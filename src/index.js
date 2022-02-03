@@ -7,10 +7,9 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 ReactDOM.render(
   <React.StrictMode>
-      <CssBaseline />
-      <Container maxWidth="l">
+
     <App />
-    </Container>
+ 
   </React.StrictMode>,
   document.getElementById('root')
 );

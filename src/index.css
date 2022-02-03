@@ -22,8 +22,30 @@ body,
   min-height: 100vh;
   height: 100%;
   width: 100%;
-  background-color: #ebecf0;
+  background-color: #e6e7ee;
 }
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  background: #e6e7ee;
+  box-sizing: border-box;
+}
+@media (min-width: 600px) {
+  .container {
+    padding-left: 24px;
+    padding-right: 24px
+
+}
+}
+
 div,
 p,
 span {
@@ -86,6 +108,7 @@ button {
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   font-weight: 600;
+
 }
 
 button:hover {
@@ -109,19 +132,7 @@ button:active {
   flex-direction: row;
   flex-wrap: wrap;
 }
-.container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-  background: #ebecf0;
-}
+
 .animate {
   animation-duration: 0.75s;
   animation-duration: 1s;
@@ -176,7 +187,7 @@ button:active {
   width: min-content;
 }
 .container .card:hover {
-  box-shadow: inset -6px -6px 10px rgba(255, 255, 255, 0.5), inset 6px 6px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: inset -6px -6px 10px rgba(255, 255, 255, 0.5), inset 6px 6px 20px rgba(0, 0, 0, 0.15);
 }
 @media (max-width: 960px) {
   .container .card {

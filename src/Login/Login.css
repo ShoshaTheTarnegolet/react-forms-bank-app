@@ -14,6 +14,7 @@
   display: block;
   width: 100%;
 }
+
 @media (max-width: 1024px) {
   .input-login {
     flex-direction: column;

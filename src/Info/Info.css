@@ -3,7 +3,7 @@
   flex-direction: row;
   width: 100%;
   flex-wrap: wrap;
-  padding: 0 5%;
+  margin: 0 5%;
 }
 /* block with info cards */
 .text_column {
